@@ -1,0 +1,4 @@
+components - navbar, article, sidebar
+html - jsx
+class reserved word in javascript so can't use in jsx
+component tree
