@@ -10,3 +10,7 @@ single css file for small projects , it is imported in index.js file
 * targeting every element with asterisk
 camel case is used in jsx emplate
 inline styling - dynamic value which is an object - key value pair
+events - hover, click, form submission, scroll 
+parenthesis invoke the function
+concatenation can be used
+default parameter is event for any function we can play with its properties
