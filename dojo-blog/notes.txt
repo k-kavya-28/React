@@ -4,3 +4,9 @@ class reserved word in javascript so can't use in jsx
 component tree
 sfc snippet - stateless functional component
 /creat for routing
+app.js is the root component
+app.css apply styles to all the components(js files) as it is put on the top of the webpage
+single css file for small projects , it is imported in index.js file
+* targeting every element with asterisk
+camel case is used in jsx emplate
+inline styling - dynamic value which is an object - key value pair
