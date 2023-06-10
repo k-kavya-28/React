@@ -17,3 +17,4 @@ default parameter is event for any function we can play with its properties
 state of components, data could be variable like boolean or array in a component
 react doesnt render any change in the variable - for this we use useState hook, helps us to make a reactive value
 chrome react developer tools - component tree 
+outputting list - array - using hook - object - keyvalue pair - return only template not hardcode - map method
