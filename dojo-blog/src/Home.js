@@ -1,24 +1,20 @@
 import { useState }  from "react";
+import BlogList from "./blogList";
 
 
 const Home = () => {
     //states
     //first an array to destructure two values
     const [blogs,setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum ...', author: 'mario', id: 1 },
-        { title: 'welcome party !', body: 'lorem ipsum ...', author: 'yoshi', id: 2 },
-        { title: 'Web dev', body: 'lorem ipsum ...', author: 'mario', id: 3 }
+        { title: 'My new website', body: 'lorem ipsum ...', author: 'khushi', id: 1 },
+        { title: 'welcome party !', body: 'lorem ipsum ...', author: 'kavya', id: 2 },
+        { title: 'Web dev', body: 'lorem ipsum ...', author: 'jassika', id: 3 }
     ])
     return (
         <div className="home">
             {/* we dont hard code (using 3 div's) as the blogs may be changed in the future , so we use map method in javascript- map method cycles through an array and it can do something with each item in the array, we want to return a bit of template for each item in the array that will be output in the browser  */}
             {/* inside the template we can output javascript */}
-            {blogs.map((blog) => (
-                <div className="blog-preview" key = {blog.id}>
-                    <h2>{ blog.title }</h2>
-                    <p>Written by: { blog.author }</p>
-                </div>
-            ))}
+            <BlogList blogs={ blogs } title="ALL BLOGS!"/>
         </div>
     );
 }

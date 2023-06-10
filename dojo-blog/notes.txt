@@ -18,3 +18,4 @@ state of components, data could be variable like boolean or array in a component
 react doesnt render any change in the variable - for this we use useState hook, helps us to make a reactive value
 chrome react developer tools - component tree 
 outputting list - array - using hook - object - keyvalue pair - return only template not hardcode - map method
+props - common component example blog list - data used, so props are used to transfer data from one component to another component(parent component to child one) - increases reusability
