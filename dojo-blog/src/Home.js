@@ -10,11 +10,18 @@ const Home = () => {
         { title: 'welcome party !', body: 'lorem ipsum ...', author: 'kavya', id: 2 },
         { title: 'Web dev', body: 'lorem ipsum ...', author: 'jassika', id: 3 }
     ])
+
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs);
+    }
+
     return (
         <div className="home">
             {/* we dont hard code (using 3 div's) as the blogs may be changed in the future , so we use map method in javascript- map method cycles through an array and it can do something with each item in the array, we want to return a bit of template for each item in the array that will be output in the browser  */}
             {/* inside the template we can output javascript */}
             <BlogList blogs={ blogs } title="ALL BLOGS!"/>
+            <BlogList blogs={ blogs.filter((blog) => blog.author === 'jassika') } title="KK's BLOGS!" handleDelete = {handleDelete} />
         </div>
     );
 }
