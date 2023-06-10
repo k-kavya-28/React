@@ -11,6 +11,8 @@ const Home = () => {
         { title: 'Web dev', body: 'lorem ipsum ...', author: 'jassika', id: 3 }
     ])
 
+    const [name, setName] = useState('kavya');
+
     const handleDelete = (id) => {
         const newBlogs = blogs.filter(blog => blog.id !== id);
         setBlogs(newBlogs);
@@ -18,8 +20,9 @@ const Home = () => {
 
     useEffect(() => {
         console.log('use effect ran');
-        console.log(blogs);
-    });
+        console.log(name);
+        // console.log(blogs);
+    }, [name] );
 
     return (
         <div className="home">
@@ -27,6 +30,8 @@ const Home = () => {
             {/* inside the template we can output javascript */}
             <BlogList blogs={ blogs } title="ALL BLOGS!"/>
             <BlogList blogs={ blogs.filter((blog) => blog.author === 'jassika') } title="KK's BLOGS!" handleDelete = {handleDelete} />
+            <button onClick={() => setName('Khushi')}>change name</button>
+            <p>{name}</p>
         </div>
     );
 }
