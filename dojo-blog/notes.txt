@@ -19,3 +19,7 @@ react doesnt render any change in the variable - for this we use useState hook, 
 chrome react developer tools - component tree 
 outputting list - array - using hook - object - keyvalue pair - return only template not hardcode - map method
 props - common component example blog list - data used, so props are used to transfer data from one component to another component(parent component to child one) - increases reusability , reusing the logic
+hooks - 
+    useState hook - used to make state for a component
+    useEffect hook - used to do side effects in our components, runs after every render
+useEffect doesn't return anything so it's not stores in const, we can fetch data or do some kind of authentication service
