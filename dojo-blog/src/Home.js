@@ -7,6 +7,7 @@ const Home = () => {
     //first an array to destructure two values
     const [blogs,setBlogs] = useState (null);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     // ([
     //     { title: 'My new website', body: 'lorem ipsum ...', author: 'khushi', id: 1 },
@@ -30,15 +31,25 @@ const Home = () => {
     useEffect(() => {
         setTimeout(() => {
             fetch('http://localhost:8000/blogs')
-            .then( res => {
-                return res.json();
-            })
-            .then(data => {
-                // console.log(data);
-                setBlogs(data);
-                setIsLoading(false);
-            }, 1000);
-        })
+                .then( res => {
+                    // console.log(res);
+                    if(!res.ok) {
+                        throw Error('Could not fetch the data for that resource');
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    // console.log(data);
+                    setBlogs(data);
+                    setIsLoading(false);
+                    setError(null);
+                })
+                .catch(err => {
+                    // console.log(err.message);
+                    setError(err.message);
+                    setIsLoading(false);
+                })
+        }, 1000);
     }, [] );
 
     // return (
@@ -57,6 +68,7 @@ const Home = () => {
             {/* { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!" handleDelete = {handleDelete} />} */}
             { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!"  />}
             {isLoading && <div>Loading ...</div> }
+            { error && <div>{ error }</div> }
         </div>
     );
 }

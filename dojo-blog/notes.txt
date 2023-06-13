@@ -26,3 +26,5 @@ useEffect doesn't return anything so it's not stores in const, we can fetch data
 endpoints
 [] is empty dependency in useEffect
 conditional template , conditional and &&
+error - 1) sent by the server 
+        2) no connection with the server
