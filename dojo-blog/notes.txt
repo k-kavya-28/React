@@ -23,3 +23,4 @@ hooks -
     useState hook - used to make state for a component
     useEffect hook - used to do side effects in our components, runs after every render
 useEffect doesn't return anything so it's not stores in const, we can fetch data or do some kind of authentication service
+endpoints

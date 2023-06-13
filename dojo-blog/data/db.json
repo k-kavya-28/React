@@ -1,0 +1,16 @@
+{
+    "blogs": [
+        {
+            "title":"AMAZON",
+            "body": "Amazon.com, Inc. is an American multinational technology company focusing on e-commerce, cloud computing, online advertising, digital streaming, and artificial intelligence",
+            "founder": "Jeff Bezos",
+            "id":1  
+        },
+        {
+            "title":"NETFLIX",
+            "body": "Netflix is an American subscription video on-demand over-the-top streaming service owned",
+            "founder": "Marc and Reed",
+            "id":2  
+        }
+    ]
+}
