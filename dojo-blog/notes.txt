@@ -24,3 +24,5 @@ hooks -
     useEffect hook - used to do side effects in our components, runs after every render
 useEffect doesn't return anything so it's not stores in const, we can fetch data or do some kind of authentication service
 endpoints
+[] is empty dependency in useEffect
+conditional template , conditional and &&

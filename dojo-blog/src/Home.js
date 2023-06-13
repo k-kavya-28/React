@@ -5,33 +5,58 @@ import BlogList from "./blogList";
 const Home = () => {
     //states
     //first an array to destructure two values
-    const [blogs,setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum ...', author: 'khushi', id: 1 },
-        { title: 'welcome party !', body: 'lorem ipsum ...', author: 'kavya', id: 2 },
-        { title: 'Web dev', body: 'lorem ipsum ...', author: 'jassika', id: 3 }
-    ])
+    const [blogs,setBlogs] = useState (null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const [name, setName] = useState('kavya');
+    // ([
+    //     { title: 'My new website', body: 'lorem ipsum ...', author: 'khushi', id: 1 },
+    //     { title: 'welcome party !', body: 'lorem ipsum ...', author: 'kavya', id: 2 },
+    //     { title: 'Web dev', body: 'lorem ipsum ...', author: 'jassika', id: 3 }
+    // ])
 
-    const handleDelete = (id) => {
-        const newBlogs = blogs.filter(blog => blog.id !== id);
-        setBlogs(newBlogs);
-    }
+    // const [name, setName] = useState('kavya');
+
+    // const handleDelete = (id) => {
+    //     const newBlogs = blogs.filter(blog => blog.id !== id);
+    //     setBlogs(newBlogs);
+    // }
+
+    // useEffect(() => {
+    //     console.log('use effect ran');
+    //     console.log(name);
+    //     // console.log(blogs);
+    // }, [name] );
 
     useEffect(() => {
-        console.log('use effect ran');
-        console.log(name);
-        // console.log(blogs);
-    }, [name] );
+        setTimeout(() => {
+            fetch('http://localhost:8000/blogs')
+            .then( res => {
+                return res.json();
+            })
+            .then(data => {
+                // console.log(data);
+                setBlogs(data);
+                setIsLoading(false);
+            }, 1000);
+        })
+    }, [] );
+
+    // return (
+    //     <div className="home">
+    //         {/* we dont hard code (using 3 div's) as the blogs may be changed in the future , so we use map method in javascript- map method cycles through an array and it can do something with each item in the array, we want to return a bit of template for each item in the array that will be output in the browser  */}
+    //         {/* inside the template we can output javascript */}
+    //         <BlogList blogs={ blogs } title="ALL BLOGS!"/>
+    //         <BlogList blogs={ blogs.filter((blog) => blog.author === 'jassika') } title="KK's BLOGS!" handleDelete = {handleDelete} />
+    //         <button onClick={() => setName('Khushi')}>change name</button>
+    //         <p>{name}</p>
+    //     </div>
+    // );
 
     return (
         <div className="home">
-            {/* we dont hard code (using 3 div's) as the blogs may be changed in the future , so we use map method in javascript- map method cycles through an array and it can do something with each item in the array, we want to return a bit of template for each item in the array that will be output in the browser  */}
-            {/* inside the template we can output javascript */}
-            <BlogList blogs={ blogs } title="ALL BLOGS!"/>
-            <BlogList blogs={ blogs.filter((blog) => blog.author === 'jassika') } title="KK's BLOGS!" handleDelete = {handleDelete} />
-            <button onClick={() => setName('Khushi')}>change name</button>
-            <p>{name}</p>
+            {/* { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!" handleDelete = {handleDelete} />} */}
+            { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!"  />}
+            {isLoading && <div>Loading ...</div> }
         </div>
     );
 }
