@@ -1,13 +1,15 @@
 import { useState, useEffect }  from "react";
 import BlogList from "./blogList";
+import useFetch from "./useFetch";
 
 
 const Home = () => {
+    const { data: blogs , isLoading, error } = useFetch('http://localhost:8000/blogs')
+
+
     //states
     //first an array to destructure two values
-    const [blogs,setBlogs] = useState (null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    
 
     // ([
     //     { title: 'My new website', body: 'lorem ipsum ...', author: 'khushi', id: 1 },
@@ -28,29 +30,7 @@ const Home = () => {
     //     // console.log(blogs);
     // }, [name] );
 
-    useEffect(() => {
-        setTimeout(() => {
-            fetch('http://localhost:8000/blogs')
-                .then( res => {
-                    // console.log(res);
-                    if(!res.ok) {
-                        throw Error('Could not fetch the data for that resource');
-                    }
-                    return res.json();
-                })
-                .then(data => {
-                    // console.log(data);
-                    setBlogs(data);
-                    setIsLoading(false);
-                    setError(null);
-                })
-                .catch(err => {
-                    // console.log(err.message);
-                    setError(err.message);
-                    setIsLoading(false);
-                })
-        }, 1000);
-    }, [] );
+    
 
     // return (
     //     <div className="home">

@@ -28,3 +28,6 @@ endpoints
 conditional template , conditional and &&
 error - 1) sent by the server 
         2) no connection with the server
+useFetch.js is for custom hook - use same logic over and over again
+custom hook name needs to start with use else it won't work
+useFetch funtion will be the hook itself
