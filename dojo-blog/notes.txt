@@ -31,3 +31,7 @@ error - 1) sent by the server
 useFetch.js is for custom hook - use same logic over and over again
 custom hook name needs to start with use else it won't work
 useFetch funtion will be the hook itself
+React routing - the server sends index.html + js bundle altogether, /contact for contact.js
+router package needs to be installed : npm install react-router-dom@6
+entire application i.e. all the components need to be inside the Router
+Switch makes sure there is only one route at one time 
