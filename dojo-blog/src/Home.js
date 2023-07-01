@@ -1,10 +1,17 @@
-import { useState, useEffect }  from "react";
-import BlogList from "./blogList";
+import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 
 
 const Home = () => {
     const { data: blogs , isLoading, error } = useFetch('http://localhost:8000/blogs');
+
+    return (
+        <div className="home">
+            { error && <div>{ error }</div> }
+            {isLoading && <div>Loading ...</div> }
+            { blogs && <BlogList blogs={blogs} title="KK's BLOGS!"  />}
+        </div>
+    );
 
 
     //states
@@ -27,7 +34,7 @@ const Home = () => {
     // useEffect(() => {
     //     console.log('use effect ran');
     //     console.log(name);
-    //     // console.log(blogs);
+        // console.log(blogs);
     // }, [name] );
 
     
@@ -43,14 +50,7 @@ const Home = () => {
     //     </div>
     // );
 
-    return (
-        <div className="home">
-            { error && <div>{ error }</div> }
-            {isLoading && <div>Loading ...</div> }
-            { blogs && <BlogList blogs={blogs} title="KK's BLOGS!"  />}
-            {/* { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!" handleDelete = {handleDelete} />} */}
-        </div>
-    );
+    
 }
 
 export default Home;
@@ -71,23 +71,23 @@ export default Home;
 
 
 
-// //useState is the function name
+//useState is the function name
 
 // const Home = () => {
-//     // let name = 'nishi';
+    // let name = 'nishi';
 //     const [name, setName] = useState('nishi');
 //     const [age,setAge] = useState(17);
 
 //     const handleClick = () => {
 //         setName('jassika');
 //         setAge(18);
-//         // name = 'jassika'
-//         // console.log('name');
+        // name = 'jassika'
+        // console.log('name');
 //     }
 
-//     // const handleClickAgain = (name) => {
-//     //     console.log('Hello ' + name);
-//     // }
+    // const handleClickAgain = (name) => {
+    //     console.log('Hello ' + name);
+    // }
 
 
 //     return (
@@ -107,5 +107,4 @@ export default Home;
 //         </div>
 //     );
 // }
- 
 // export default Home;

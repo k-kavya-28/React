@@ -1,6 +1,5 @@
 import { useState, useEffect }  from "react";
 
-
 const useFetch = (url) => {
     // const [blogs,setBlogs] = useState (null);
     const [data,setData] = useState (null);
@@ -9,9 +8,10 @@ const useFetch = (url) => {
 
 
     useEffect(() => {
+        const abortCont = new AbortController();
+
         setTimeout(() => {
-            // fetch('http://localhost:8000/blogs')
-            fetch(url)
+            fetch(url, { signal: abortCont.signal })
                 .then( res => {
                     // console.log(res);
                     if(!res.ok) {
@@ -21,16 +21,24 @@ const useFetch = (url) => {
                 })
                 .then(data => {
                     // console.log(data);
-                    setData(data);
-                    setIsLoading(false);
-                    setError(null);
+                    if(data) {
+                        setData(data);
+                        setIsLoading(false);
+                        setError(null);
+                    }
                 })
                 .catch(err => {
                     // console.log(err.message);
-                    setError(err.message);
-                    setIsLoading(false);
-                })
+                    if(err.name === 'AbortError') {
+                        console.log('fetch aborted');
+                    } else {
+                        setError(err.message);
+                        setIsLoading(false);
+                    }    
+                });
         }, 1000);
+
+        return () => abortCont.abort();
     }, [url] );
 
     return { data, isLoading, error }
