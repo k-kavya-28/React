@@ -5,6 +5,10 @@ const BlogDetails = () => {
     const { id } = useParams();
     const { data:blog, error, isLoading } = useFetch('http://localhost:8000/blogs/' + id);
 
+    const handleClick= () => {
+        fetch('http://localhost:8000/blogs')
+    }
+
     return (
         <div className="blog-details">
             { isLoading && <div>Loading...</div> }
@@ -14,6 +18,7 @@ const BlogDetails = () => {
                 <h2>{ blog.title }</h2>
                 <p>Written by: { blog.author }</p>
                 <div>{ blog.body }</div>
+                <button onClick={handleClick}>delete</button>
                 </article>
             )}
         </div>
