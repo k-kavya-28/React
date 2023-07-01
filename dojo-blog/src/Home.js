@@ -4,7 +4,7 @@ import useFetch from "./useFetch";
 
 
 const Home = () => {
-    const { data: blogs , isLoading, error } = useFetch('http://localhost:8000/blogs')
+    const { data: blogs , isLoading, error } = useFetch('http://localhost:8000/blogs');
 
 
     //states
@@ -45,10 +45,10 @@ const Home = () => {
 
     return (
         <div className="home">
-            {/* { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!" handleDelete = {handleDelete} />} */}
-            { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!"  />}
-            {isLoading && <div>Loading ...</div> }
             { error && <div>{ error }</div> }
+            {isLoading && <div>Loading ...</div> }
+            { blogs && <BlogList blogs={blogs} title="KK's BLOGS!"  />}
+            {/* { blogs && <BlogList blogs={ blogs } title="KK's BLOGS!" handleDelete = {handleDelete} />} */}
         </div>
     );
 }
