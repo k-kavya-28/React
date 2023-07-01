@@ -35,3 +35,4 @@ React routing - the server sends index.html + js bundle altogether, /contact for
 router package needs to be installed : npm install react-router-dom@6
 entire application i.e. all the components need to be inside the Router
 Switch makes sure there is only one route at one time 
+e-event object
